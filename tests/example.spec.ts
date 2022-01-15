@@ -1,5 +1,4 @@
 import { expect, Page, test } from "@playwright/test";
-
 async function takeScreenshot(page: Page, name: string) {
   await page.screenshot({ path: `tests/__artifacts__/${name}.png` });
 }

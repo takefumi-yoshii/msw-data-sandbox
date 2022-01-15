@@ -7,7 +7,7 @@ import useSWR from "swr";
 import style from "./style.module.css";
 import { useTemplateHooks } from "./useTemplateHooks";
 
-const PageBody = (props: { post: Post }) => {
+const Body = (props: { post: Post }) => {
   const { onSubmit, register } = useTemplateHooks(props.post);
   return (
     <form onSubmit={onSubmit} className={style.module}>
@@ -36,7 +36,7 @@ export const Template = (props: { id: string }) => {
         </Link>
       }
     >
-      {!data ? <>...loading</> : <PageBody post={data} />}
+      {!data ? <>...loading</> : <Body post={data} />}
     </Layout>
   );
 };
