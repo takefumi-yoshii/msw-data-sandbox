@@ -18,7 +18,4 @@ jobs:
       - name: Start App
         run: yarn start &
       - name: Run Test
-        uses: ./
-        with:
-          start: yarn test:e2e
-          wait-on: "http://localhost:3000"
+        run: yarn test:e2e
