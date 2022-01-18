@@ -16,9 +16,7 @@ jobs:
       - name: Build App
         run: yarn build
       - name: Run Test
-        uses: ./
-        with:
-          start: yarn test:e2e
-          wait-on: "http://localhost:3000"
-      - name: Start App
-        run: yarn start
+        run: |
+          yarn start &
+          npx wait-port http://:3000 --timeout 10000
+          yarn test:e2e
