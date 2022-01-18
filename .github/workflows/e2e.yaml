@@ -9,12 +9,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.13.2"
+      - name: Install Playwright
+        run: npx playwright install-deps chromium
+      - name: Install Deps
+        run: yarn
+      - name: Build App
+        run: yarn build
       - name: Start App
-        run: |
-          npx playwright install-deps chromium
-          yarn
-          yarn build
-          yarn start
+        run: yarn start &
       - name: Run Test
         uses: ./
         with:
