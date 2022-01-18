@@ -6,7 +6,7 @@ async function takeScreenshot(page: Page, name: string) {
 test("edit post", async ({ page }) => {
   const expectText = "TEST";
   await page.goto("http://localhost:3000/posts");
-  await page.locator("text=Lorem ipsum").click();
+  await page.locator("text=Lorem ipsun").click();
   await page.waitForNavigation();
   await page.locator("text=edit").click();
   await page.waitForNavigation();
