@@ -16,6 +16,6 @@ jobs:
           yarn build
           yarn start &
       - name: Run Test
+        run: yarn test:e2e
         with:
           wait-on: "http://localhost:3000"
-        run: yarn test:e2e
