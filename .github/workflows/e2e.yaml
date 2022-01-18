@@ -15,6 +15,7 @@ jobs:
           yarn
           yarn build
           yarn start &
-          npx wait-port http://:3000 --timeout 10000
       - name: Run Test
+        with:
+          wait-on: "http://localhost:3000"
         run: yarn test:e2e
