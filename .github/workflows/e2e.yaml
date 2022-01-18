@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest # or macos-latest, windows-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
       - uses: microsoft/playwright-github-action@v1
-      - name: Install dependencies and run tests
-        run: npm install && npm test:e2e
+      - name: Start App
+        run: |
+          yarn
+          yarn build
+          yarn start &
+          npx wait-port http://:3000 --timeout 10000
+      - name: Run Test
+        run: yarn test:e2e
