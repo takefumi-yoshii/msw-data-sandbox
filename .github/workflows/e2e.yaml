@@ -14,8 +14,9 @@ jobs:
           npx playwright install-deps chromium
           yarn
           yarn build
-          yarn start &
+          yarn start
       - name: Run Test
-        run: yarn test:e2e
+        uses: ./
         with:
+          start: yarn test:e2e
           wait-on: "http://localhost:3000"
