@@ -11,7 +11,7 @@ jobs:
           node-version: "16.13.2"
       - name: Start App
         run: |
-          npx playwright install-depschromium
+          npx playwright install-deps chromium
           yarn
           yarn build
           yarn start &
