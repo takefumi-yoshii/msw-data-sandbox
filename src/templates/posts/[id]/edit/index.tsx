@@ -8,12 +8,14 @@ import style from "./style.module.css";
 import { useTemplateHooks } from "./useTemplateHooks";
 
 const Body = (props: { post: Post }) => {
-  const { onSubmit, register } = useTemplateHooks(props.post);
+  const { onSubmit, register, errors } = useTemplateHooks(props.post);
+
   return (
     <form onSubmit={onSubmit} className={style.module}>
       <section>
         <h2>title</h2>
-        <input type="text" {...register("title")} />
+        <input type="text" {...register("title")} placeholder="title" />
+        {errors.title && <p role="alert">※ {errors.title.message}</p>}
       </section>
       <section>
         <h2>body</h2>

@@ -24,3 +24,8 @@ a {
   background-color: rgb(241, 241, 241);
   border: 1px solid #ccc;
 }
+
+[role="alert"] {
+  font-size: 10px;
+  color: #f00;
+}
