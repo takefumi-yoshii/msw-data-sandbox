@@ -1,4 +1,4 @@
-import { seed } from "./db";
+import { seed } from "../db";
 
 if (typeof window === "undefined") {
   seed();
