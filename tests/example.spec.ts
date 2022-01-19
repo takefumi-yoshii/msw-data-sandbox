@@ -10,6 +10,7 @@ test("edit post", async ({ page }) => {
   await page.locator("text=edit").click();
   await page.fill("[name=title]", expectText);
   await page.locator("button").click();
+  await page.waitForNavigation();
   const locator = page.locator("h2");
   await expect(locator).toHaveText(expectText);
   await takeScreenshot(page, "edit_post");
