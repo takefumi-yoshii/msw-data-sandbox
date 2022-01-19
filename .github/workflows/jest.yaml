@@ -1,0 +1,15 @@
+name: Jest Unit Testing
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest # or macos-latest, windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.13.2
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.13.2"
+      - name: Install Deps
+        run: yarn
+      - name: Run Test
+        run: npx jest
