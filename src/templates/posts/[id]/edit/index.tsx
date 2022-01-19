@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { fetcher } from "@/lib/swr";
-import type { Post } from "@/mock/msw/db";
+import type { Post } from "@/mock/db/models/post";
 import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
@@ -9,7 +9,6 @@ import { useTemplateHooks } from "./useTemplateHooks";
 
 const Body = (props: { post: Post }) => {
   const { onSubmit, register, errors } = useTemplateHooks(props.post);
-
   return (
     <form onSubmit={onSubmit} className={style.module}>
       <section>

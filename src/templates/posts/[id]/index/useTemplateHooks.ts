@@ -1,4 +1,4 @@
-import type { Post } from "@/mock/msw/db";
+import type { Post } from "@/mock/db/models/post";
 import { useRouter } from "next/router";
 import { mutate } from "swr";
 

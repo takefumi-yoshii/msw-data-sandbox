@@ -1,4 +1,4 @@
-import type { Post } from "@/mock/msw/db";
+import type { Post } from "@/mock/db/models/post";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
