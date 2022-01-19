@@ -1,7 +1,7 @@
 import { BottomNav } from "@/components/BottomNav";
 import { Layout } from "@/components/Layout";
 import { fetcher } from "@/lib/swr";
-import type { Post } from "@/mock/msw/db";
+import type { Post } from "@/mock/db/models/post";
 import Link from "next/link";
 import React from "react";
 import useSWR from "swr";

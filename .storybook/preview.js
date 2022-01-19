@@ -1,11 +1,10 @@
+import { mswDbSeed } from "@/mock/storybook/mswDbSeed";
 import { initialize, mswDecorator } from "msw-storybook-addon";
-import { seed } from "../src/mock/msw/db";
 import { handlers } from "../src/mock/msw/handlers";
 
 initialize();
-seed();
 
-export const decorators = [mswDecorator];
+export const decorators = [mswDecorator, mswDbSeed()];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
