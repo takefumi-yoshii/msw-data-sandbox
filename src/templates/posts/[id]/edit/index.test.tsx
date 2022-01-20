@@ -15,7 +15,9 @@ describe("src/templates/posts/[id]/edit/index.test.tsx", () => {
   describe("初期表示", () => {
     test("正常時", async () => {
       render(<Default />);
-      expect(await screen.findByText("POST")).toBeInTheDocument();
+      expect(await screen.findByPlaceholderText("title")).toHaveValue(
+        "seed example"
+      );
     });
   });
   describe("バリデーション表示", () => {
