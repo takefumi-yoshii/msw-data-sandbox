@@ -9,14 +9,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.13.2"
-      - name: Install Playwright
-        run: npx playwright install-deps
       - name: Install Deps
         run: yarn
       - name: Build App
         run: yarn build
       - name: Run Test
         run: |
+          npx playwright install
           yarn start &
           npx wait-port http://:3000 --timeout 10000
           yarn test:e2e
