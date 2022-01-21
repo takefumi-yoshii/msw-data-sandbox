@@ -1,18 +1,4 @@
-import { Page, test as base } from "@playwright/test";
-import { defaultValues } from "../src/mock/db/models";
-
-export const test = base.extend<{
-  seed: (fixture: typeof defaultValues) => Promise<void>;
-}>({
-  seed: async ({ page }, use) => {
-    await use(async (fixture) => {
-      await page.evaluate(([window, fixture]) => window.msw.seed(fixture), [
-        await page.evaluateHandle(() => window),
-        fixture,
-      ] as const);
-    });
-  },
-});
+import { Page } from "@playwright/test";
 
 export async function takeScreenshot(page: Page, name: string) {
   await page.screenshot({ path: `tests/__artifacts__/${name}.png` });
