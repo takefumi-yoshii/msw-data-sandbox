@@ -1,5 +1,5 @@
-import { expect, test } from "@playwright/test";
-import { seed, takeScreenshot } from "./helper";
+import { expect } from "@playwright/test";
+import { takeScreenshot, test } from "./helper";
 
 test("edit post", async ({ page }) => {
   const expectText = "TEST";
@@ -25,10 +25,10 @@ test("create post", async ({ page }) => {
   await takeScreenshot(page, "create_post");
 });
 
-test("seeding", async ({ page }) => {
+test("seeding", async ({ page, seed }) => {
   const expectText = "🍖";
   await page.goto("http://localhost:3000/posts");
-  await seed(page, {
+  await seed({
     posts: [...new Array(100)].map((_, i) => ({
       id: `${i}`,
       title: expectText,
