@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { takeScreenshot, test } from "./helper";
+import { createPostsFixture, takeScreenshot, test } from "./helper";
 
 test("edit post", async ({ page }) => {
-  const expectText = "TEST";
+  const expectText = "🍶";
   await page.goto("http://localhost:3000/posts");
   await page.locator("text=Lorem ipsum").click();
   await page.locator("text=edit").click();
@@ -15,7 +15,7 @@ test("edit post", async ({ page }) => {
 });
 
 test("create post", async ({ page }) => {
-  const expectText = "TEST";
+  const expectText = "🍺";
   await page.goto("http://localhost:3000/posts");
   await page.locator("text=create new").click();
   await page.fill("[name=title]", expectText);
@@ -27,15 +27,26 @@ test("create post", async ({ page }) => {
 
 test("seeding", async ({ page, seed }) => {
   const expectText = "🍖";
+  const posts = createPostsFixture(expectText);
   await page.goto("http://localhost:3000/posts");
-  await seed({
-    posts: [...new Array(100)].map((_, i) => ({
-      id: `${i}`,
-      title: expectText,
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    })),
-  });
+  await seed({ posts });
   const locator = page.locator("[data-testid=list] li:last-child");
   await expect(locator).toHaveText(expectText);
   await takeScreenshot(page, "seeding");
+});
+
+test("intercepting", async ({ page }) => {
+  const expectText = "🐠";
+  const fixture = createPostsFixture(expectText);
+  await page.goto("http://localhost:3000/posts");
+  await page.evaluate(
+    ([win, fixture]) => {
+      const { worker, rest } = win.msw;
+      worker.use(rest.get("/posts", (_, res, ctx) => res(ctx.json(fixture))));
+    },
+    [await page.evaluateHandle(() => window), fixture] as const
+  );
+  const locator = page.locator("[data-testid=list] li:last-child");
+  await expect(locator).toHaveText(expectText);
+  await takeScreenshot(page, "intercepting");
 });
