@@ -17,3 +17,11 @@ global.Response = fetchPolifill.Response;
 // library mock
 
 jest.mock("next/dist/client/router", () => require("next-router-mock"));
+
+// https://github.com/nickcolley/jest-axe/issues/95#issuecomment-758921334
+jest.mock(
+  "next/link",
+  () =>
+    ({ children }) =>
+      children
+);

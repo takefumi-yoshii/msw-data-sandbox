@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { checkA11y, injectAxe } from "axe-playwright";
 import { createPostsFixture, takeScreenshot } from "./helper";
 
 test("edit post", async ({ page }) => {
@@ -11,6 +12,8 @@ test("edit post", async ({ page }) => {
   await page.waitForNavigation();
   const locator = page.locator("h2");
   await expect(locator).toHaveText(expectText);
+  await injectAxe(page);
+  await checkA11y(page);
   await takeScreenshot(page, "edit_post");
 });
 
@@ -22,6 +25,8 @@ test("create post", async ({ page }) => {
   await page.locator("button").click();
   const locator = page.locator("[data-testid=list] li:last-child");
   await expect(locator).toHaveText(expectText);
+  await injectAxe(page);
+  await checkA11y(page);
   await takeScreenshot(page, "create_post");
 });
 
@@ -35,6 +40,8 @@ test("seeding", async ({ page }) => {
   }, posts);
   const locator = page.locator("[data-testid=list] li:last-child");
   await expect(locator).toHaveText(expectText);
+  await injectAxe(page);
+  await checkA11y(page);
   await takeScreenshot(page, "seeding");
 });
 
@@ -48,5 +55,7 @@ test("intercepting", async ({ page }) => {
   }, fixture);
   const locator = page.locator("[data-testid=list] li:last-child");
   await expect(locator).toHaveText(expectText);
+  await injectAxe(page);
+  await checkA11y(page);
   await takeScreenshot(page, "intercepting");
 });

@@ -1,6 +1,6 @@
+import { handlers } from "@/mock/msw/handlers";
 import { mswDbSeed } from "@/mock/storybook/mswDbSeed";
 import { initialize, mswDecorator } from "msw-storybook-addon";
-import { handlers } from "../src/mock/msw/handlers";
 
 initialize();
 
