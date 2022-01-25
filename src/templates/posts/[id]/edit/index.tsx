@@ -12,13 +12,17 @@ const Body = (props: { post: Post }) => {
   return (
     <form onSubmit={onSubmit} className={style.module}>
       <section>
-        <h2>title</h2>
-        <input type="text" {...register("title")} placeholder="title" />
+        <label>
+          <h2>title</h2>
+          <input type="text" {...register("title")} placeholder="title" />
+        </label>
         {errors.title && <p role="alert">※ {errors.title.message}</p>}
       </section>
       <section>
-        <h2>body</h2>
-        <textarea {...register("body")} />
+        <label>
+          <h2>body</h2>
+          <textarea {...register("body")} />
+        </label>
       </section>
       <button className="button">update</button>
     </form>
