@@ -9,9 +9,13 @@ export const Layout = (props: {
 }) => {
   return (
     <div className={style.module}>
-      <h1>{props.title}</h1>
-      {props.children}
-      <BottomNav>{props.bottomNav}</BottomNav>
+      <header>
+        <h1>{props.title}</h1>
+      </header>
+      <main>{props.children}</main>
+      <footer>
+        <BottomNav>{props.bottomNav}</BottomNav>
+      </footer>
     </div>
   );
 };

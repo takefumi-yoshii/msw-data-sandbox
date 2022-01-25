@@ -3789,10 +3789,17 @@ axe-core@^3.5.5:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.6.tgz#e762a90d7f6dbd244ceacb4e72760ff8aad521b5"
   integrity sha512-LEUDjgmdJoA3LqklSTwKYqkjcZ4HKc4ddIYGSAiSkr46NTjzg2L9RNB+lekO9P7Dlpa87+hBtzc2Fzn/+GUWMQ==
 
-axe-core@^4.2.0, axe-core@^4.3.5:
+axe-core@^4.0.1, axe-core@^4.2.0, axe-core@^4.3.5:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
   integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
+
+axe-playwright@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/axe-playwright/-/axe-playwright-1.1.9.tgz#9942c30504c5c346f49fbfc39c1cb4a406ac8d6b"
+  integrity sha512-fFT24vB6QoS7yAe+iZK+9vl5fswlHZ7Ii5Naq+bCA/7WJQCMskg+nNbPsPT8hVZZ6zVDbUh2lgrPzm3OguRPBQ==
+  dependencies:
+    axe-core "^4.0.1"
 
 axobject-query@^2.2.0:
   version "2.2.0"
