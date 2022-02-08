@@ -1,6 +1,6 @@
 import { seed } from "../db";
 
-if (typeof window === "undefined") {
+if (typeof window === "undefined" || process.env.NODE_ENV === "test") {
   seed();
   const { server } = require("./server");
   server.listen();
